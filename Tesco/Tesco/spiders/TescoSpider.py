@@ -16,8 +16,8 @@ for i in range(1, 101):
 class TescospiderSpider(scrapy.Spider):
     name = 'TescoSpider'
     allowed_domains = ['tesco.com']
-    start_urls = urls_list[:]
-    #start_urls = ['https://www.tesco.com/groceries/en-GB/products/302664282']# 301947168 302664282
+    #start_urls = urls_list[:]
+    start_urls = ['https://www.tesco.com/groceries/en-GB/products/302664282']# 301947168 302664282
     
     def parse(self, response):
         print("RESPONSE URL 1 :", response.url)

@@ -1,51 +1,45 @@
-# -*- coding: utf-8 -*-
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-
-class TescoPipeline(object):
+class tesco_pipeline(object):
     def process_item(self, item, spider):
-        item['ProductURL']          = item['ProductURL'][0]
-        item['ProductID']           = item['ProductID'][0]
-        item['ImageURL']            = item['ImageURL'][0]
-        item['ProductTitle']        = item['ProductTitle'][0]
-        item['Category']            = item['Category'][0]
-        item['Price']               = item['Price'][0]
-        
-        ProductD = ''
-        listD    = item['ProductD'][0]
-        for i in range(0, len(listD)):
-            ProductD += listD[i] + ' '
-        item['ProductD']            = ProductD
-        
-        item['PackSize']            = item['PackSize'][0]
-        
-        ManufacturerAddress = ''
-        for i in item['ManufacturerAddress'][0]:
-            ManufacturerAddress += i + ' '
-        item['ManufacturerAddress'] = ManufacturerAddress
+        item['product_url'] = item['product_url'][0]
+        item['product_id'] = item['product_id'][0]
+        item['image_url'] = item['image_url'][0]
+        item['product_title'] = item['product_title'][0]
+        item['category'] = item['category'][0]
+        item['price'] = item['price'][0]
 
-        ReturnAddress = ''
-        for i in item['ReturnAddress'][0]:
-            ReturnAddress += i + ' '
-        item['ReturnAddress']       = ReturnAddress
-        
-        item['NetContents']         = item['NetContents'][0]
+        product_d = ''
+        list_d = item['product_d'][0]
+        for i in range(0, len(list_d)):
+            product_d += list_d[i] + ' '
+        item['product_d'] = product_d
 
-        for i in item['Review']:
-            i['ReviewTitle']        = i['ReviewTitle'][0]
-            s                       = i['StarsCount'][0]
-            l                       = s.find('stars')
-            i['StarsCount']         = int(s[:l])
-            i['Author']             = i['Author'][0]
-            i['Date']               = i['Date'][0]
-            i['ReviewText']         = i['ReviewText'][0]
+        item['pack_size'] = item['pack_size'][0]
 
-        for j in item['NextProducts']:
-            j['ProductURLNext']     = str('https://www.tesco.com' + j['ProductURLNext'][0])
-            j['ProductTitleNext']   = j['ProductTitleNext'][0]
-            j['ImageURLNext']       = j['ImageURLNext'][0]
-            j['PriceNext']          = float(j['PriceNext'][0])
+        manufacturer_address = ''
+        for i in item['manufacturer_address'][0]:
+            manufacturer_address += i + ' '
+        item['manufacturer_address'] = manufacturer_address
+
+        return_address = ''
+        for i in item['return_address'][0]:
+            return_address += i + ' '
+        item['return_address'] = return_address
+
+        item['net_contents'] = item['net_contents'][0]
+
+        for i in item['review']:
+            i['review_title'] = i['review_title'][0]
+            s = i['stars_count'][0]
+            l = s.find('stars')
+            i['stars_count'] = int(s[:l])
+            i['author'] = i['author'][0]
+            i['date'] = i['date'][0]
+            i['review_text'] = i['review_text'][0]
+
+        for j in item['next_products']:
+            j['product_url_next'] = str(
+                'https://www.tesco.com' + j['product_url_next'][0])
+            j['product_title_next'] = j['product_title_next'][0]
+            j['image_url_next'] = j['image_url_next'][0]
+            j['price_next'] = float(j['price_next'][0])
         return item

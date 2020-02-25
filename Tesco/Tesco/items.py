@@ -1,36 +1,29 @@
-# -*- coding: utf-8 -*-
-
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
-
 import scrapy
 
-class TescoItem(scrapy.Item):
-    ProductURL          = scrapy.Field(serializer= str)
-    ProductID           = scrapy.Field(serializer= int)
-    ImageURL            = scrapy.Field(serializer= str)
-    ProductTitle        = scrapy.Field(serializer= str)
-    Category            = scrapy.Field(serializer= str)
-    Price               = scrapy.Field(serializer= float)
-    ProductD            = scrapy.Field(serializer= str)
-    PackSize            = scrapy.Field(serializer= str)
-    ManufacturerAddress = scrapy.Field(serializer= str)
-    ReturnAddress       = scrapy.Field(serializer= str)
-    NetContents         = scrapy.Field(serializer= str)
-    Review              = scrapy.Field(serializer= list)
-    NextProducts        = scrapy.Field(serializer= list)
+class tesco_item(scrapy.Item):
+    product_url = scrapy.Field(serializer=str)
+    product_id = scrapy.Field(serializer=int)
+    image_url = scrapy.Field(serializer=str)
+    product_title = scrapy.Field(serializer=str)
+    category = scrapy.Field(serializer=str)
+    price = scrapy.Field(serializer=float)
+    product_d = scrapy.Field(serializer=str)
+    pack_size = scrapy.Field(serializer=str)
+    manufacturer_address = scrapy.Field(serializer=str)
+    return_address = scrapy.Field(serializer=str)
+    net_contents = scrapy.Field(serializer=str)
+    review = scrapy.Field(serializer=list)
+    next_products = scrapy.Field(serializer=list)
 
-class TescoItemReview(scrapy.Item):
-    ReviewTitle         = scrapy.Field(serializer= str)
-    StarsCount          = scrapy.Field(serializer= int)
-    Author              = scrapy.Field(serializer= str)
-    Date                = scrapy.Field(serializer= str)
-    ReviewText          = scrapy.Field(serializer= str)
+class tesco_item_review(scrapy.Item):
+    review_title = scrapy.Field(serializer=str)
+    stars_count = scrapy.Field(serializer=int)
+    author = scrapy.Field(serializer=str)
+    date = scrapy.Field(serializer=str)
+    review_text = scrapy.Field(serializer=str)
 
-class TescoItemNext(scrapy.Item):
-    ProductURLNext      = scrapy.Field(serializer= str)
-    ProductTitleNext    = scrapy.Field(serializer= str)
-    ImageURLNext        = scrapy.Field(serializer= str)
-    PriceNext           = scrapy.Field(serializer= float)
+class tesco_item_next(scrapy.Item):
+    product_url_next = scrapy.Field(serializer=str)
+    product_title_next = scrapy.Field(serializer=str)
+    image_url_next = scrapy.Field(serializer=str)
+    price_next = scrapy.Field(serializer=float)

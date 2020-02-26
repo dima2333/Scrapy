@@ -3,22 +3,21 @@ import scrapy
 from scrapy.selector import Selector
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-
 from Tesco.items import tesco_item, tesco_item_review, tesco_item_next
 import openpyxl
-
-eBuffer = openpyxl.load_workbook('Quest_Links_for_the_Tesco_com_parser.xlsx')
-list1 = eBuffer.get_sheet_by_name('Лист1')
-urls_list = []
-for i in range(1, 101):
-    urls_list.append(list1.cell(row=i, column=1).value)
 
 class TescospiderSpider(scrapy.Spider):
     name = 'TescoSpider'
     allowed_domains = ['tesco.com']
-    #start_urls = urls_list[:]
-    # 301947168 302664282
-    start_urls = ['https://www.tesco.com/groceries/en-GB/products/302664282']
+    def start_requests(self):
+       #eBuffer = openpyxl.load_workbook('Quest_Links_for_the_Tesco_com_parser.xlsx')
+       #list1 = eBuffer.get_sheet_by_name('Лист1')
+       #urls_list = []
+       #for i in range(1, 101):
+       #    urls_list.append(list1.cell(row=i, column=1).value)
+       urls_list = ['https://www.tesco.com/groceries/en-GB/products/302664282']    # 301947168 302664282
+       for url in urls_list:
+           yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
         #print("RESPONSE URL 1 :", response.url)

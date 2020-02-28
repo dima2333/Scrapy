@@ -29,9 +29,12 @@ class tesco_pipeline(object):
 
         for i in item['review']:
             i['review_title'] = i['review_title'][0]
-            s = i['stars_count'][0]
-            l = s.find('stars')
-            i['stars_count'] = int(s[:l])
+            if type(i['stars_count']) == int:
+                i['stars_count'] = i['stars_count']
+            else:
+                s = i['stars_count'][0]
+                l = s.find('stars')
+                i['stars_count'] = int(s[:l])
             i['author'] = i['author'][0]
             i['date'] = i['date'][0]
             i['review_text'] = i['review_text'][0]

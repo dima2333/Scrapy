@@ -27,17 +27,12 @@ class tesco_pipeline(object):
 
         item['net_contents'] = item['net_contents'][0]
 
-        #for i in item['review']:
-        #    i['review_title'] = i['review_title'][0]
-        #    if type(i['stars_count']) == int:
-        #        i['stars_count'] = i['stars_count']
-        #    else:
-        #        s = i['stars_count'][0]
-        #        l = s.find('stars')
-        #        i['stars_count'] = int(s[:l])
-        #    i['author'] = i['author'][0]
-        #    i['date'] = i['date'][0]
-        #    i['review_text'] = i['review_text'][0]
+        for i in item['review']:
+            i['review_title'] = i['review_title'][0]
+            i['stars_count'] = i['stars_count'][0]
+            i['author'] = i['author'][0]
+            i['date'] = i['date'][0]
+            i['review_text'] = i['review_text'][0]
 
         for j in item['next_products']:
             j['product_url_next'] = str(

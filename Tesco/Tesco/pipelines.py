@@ -35,8 +35,7 @@ class tesco_pipeline(object):
             i['review_text'] = i['review_text'][0]
 
         for j in item['next_products']:
-            j['product_url_next'] = str(
-                'https://www.tesco.com' + j['product_url_next'][0])
+            j['product_url_next'] = str('https://www.tesco.com' + j['product_url_next'][0])
             j['product_title_next'] = j['product_title_next'][0]
             j['image_url_next'] = j['image_url_next'][0]
             j['price_next'] = float(j['price_next'][0])

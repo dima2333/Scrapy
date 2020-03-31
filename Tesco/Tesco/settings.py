@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'Tesco.pipelines.tesco_pipeline': 300,
+    'Tesco.pipelines.TescoPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -1,4 +1,4 @@
-class tesco_pipeline(object):
+class TescoPipeline(object):
     def process_item(self, item, spider):
         item['product_url'] = item['product_url'][0]
         item['product_id'] = item['product_id'][0]
